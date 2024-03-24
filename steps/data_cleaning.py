@@ -3,6 +3,7 @@ import pandas as pd
 from zenml import step
 
 @step
-def clean_df(data: pd.DataFrame) -> None:
+def clean_data(data: pd.DataFrame) -> None:
     """Cleans data"""
+    
     pass

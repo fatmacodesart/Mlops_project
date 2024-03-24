@@ -13,7 +13,7 @@ class IngestData:
     
 
 @step
-def ingest_df(data_path: str) -> pd.DataFrame:
+def ingest_data(data_path: str) -> pd.DataFrame:
     """Ingests data from a given path"""
     try:
         reader = IngestData(data_path)
