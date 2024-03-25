@@ -32,4 +32,23 @@ class DataPreprocessStrategy(DataStrategy):
 
 class DataSplitStrategy(DataStrategy):
     def handle_data(self, data: pd.DataFrame) -> pd.DataFrame:
-        pass
+        try:
+            X = data.drop("review_score", axis=1)
+            y = data["review_score"]
+            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+            return X_train, X_test, y_train, y_test
+        except Exception as e:
+            logging.error(f"Error in data splitting: {e}")
+            raise e
+        
+class DataCleaning:
+    def __init__(self, data: pd.DataFrame, strategy: DataStrategy):
+        self.data = data
+        self.strategy = strategy
+    
+    def handle_data(self)-> Union[pd.DataFrame, pd.Series]:
+        try:
+            return self.strategy.handle_data(self.data)
+        except Exception as e:
+            logging.error(f"Error in data cleaning: {e}")
+            raise e
