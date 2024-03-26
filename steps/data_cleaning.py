@@ -13,7 +13,16 @@ def clean_data(data: pd.DataFrame) -> Tuple[
     Annotated[pd.Series, "y_train"],
     Annotated[pd.Series, "y_test"]
 ]:
-    """Cleans data"""
+    """
+    Cleans data and returns training and testing data.
+    Args:
+        data (pd.DataFrame): Input data
+    Returns:
+        X_train (pd.DataFrame): Training data
+        X_test (pd.DataFrame): Testing data
+        y_train (pd.Series): Training labels
+        y_test (pd.Series): Testing labels
+    """
     
     try:
         preprocess_strategy = DataPreprocessStrategy()
