@@ -14,7 +14,7 @@ class Model(ABC):
         """
         pass
 
-class RegressionModel(Model):
+class LinearRegressionModel(Model):
     """Regression model class."""
     def train(self, X_train, y_train, **kwargs):
         """Train the regression model.
